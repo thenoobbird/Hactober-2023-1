@@ -1,0 +1,27 @@
+#include <iostream>
+#include <random>
+
+int main() {
+    int lower, upper;
+
+    // Input lower and upper bounds
+    std::cout << "Enter the lower bound: ";
+    std::cin >> lower;
+    std::cout << "Enter the upper bound: ";
+    std::cin >> upper;
+
+    if (lower >= upper) {
+        std::cout << "Invalid input. The lower bound must be less than the upper bound." << std::endl;
+    } else {
+        // Seed the random number generator
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<int> dist(lower, upper);
+
+        // Generate and output a random number within the specified range
+        int randomNum = dist(gen);
+        std::cout << "Random number between " << lower << " and " << upper << ": " << randomNum << std::endl;
+    }
+
+    return 0;
+}
